@@ -702,17 +702,21 @@
       background: var(--dark);
       padding: 80px 24px;
     }
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-      max-width: 1100px;
+    .testimonial-swiper {
+      position: relative;
+      max-width: 640px;
       margin: 48px auto 0;
+      overflow: hidden;
+    }
+    .testimonial-track {
+      display: flex;
+      transition: transform 0.4s ease;
     }
     .testimonial-card {
+      min-width: 100%;
       background: var(--charcoal);
       border-radius: var(--radius);
-      padding: 32px;
+      padding: 40px 36px;
       border: 1px solid rgba(255,255,255,0.08);
       position: relative;
     }
@@ -727,16 +731,16 @@
       left: 24px;
     }
     .testimonial-text {
-      font-size: 15px;
-      line-height: 1.7;
+      font-size: 16px;
+      line-height: 1.8;
       color: rgba(255,255,255,0.7);
       margin-top: 24px;
       font-style: italic;
     }
     .testimonial-author {
-      margin-top: 20px;
+      margin-top: 24px;
       font-weight: 600;
-      font-size: 14px;
+      font-size: 15px;
       color: var(--white);
     }
     .testimonial-role {
@@ -744,10 +748,46 @@
       color: rgba(255,255,255,0.5);
       font-weight: 400;
     }
-    @media (max-width: 768px) {
-      .testimonials-grid {
-        grid-template-columns: 1fr;
-      }
+    .testimonial-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .testimonial-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: var(--charcoal);
+      color: var(--white);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+    .testimonial-btn:hover {
+      background: var(--green);
+      border-color: var(--green);
+    }
+    .testimonial-dots {
+      display: flex;
+      gap: 8px;
+    }
+    .testimonial-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .testimonial-dot.active {
+      background: var(--green);
+      width: 24px;
+      border-radius: 4px;
     }
 
     /* ═══ FAQ ═══ */
@@ -1056,11 +1096,6 @@
       <p class="section-desc">From corrugated boxes to stretch film, Palmer Packaging carries a full line of industrial supplies with next-day delivery on thousands of items.</p>
       <div class="services-grid">
         <div class="service-card">
-          <div class="service-icon"><img src="images/boxes.jpg" alt="Corrugated Boxes" loading="lazy"></div>
-          <h4>Corrugated Boxes</h4>
-          <p>Over 12,000 box styles — RSC, FOL, die-cut, and custom sizes. Single-wall, double-wall, and triple-wall with printing options for shipping, storage, and retail display.</p>
-        </div>
-        <div class="service-card">
           <div class="service-icon"><img src="images/strapping.png" alt="Equipment & Service" loading="lazy"></div>
           <h4>Equipment & Service</h4>
           <p>Semi-auto and automatic strapping machines, stretch wrap equipment, tape dispensers, and heat seal systems — plus installation, repair, and preventive maintenance.</p>
@@ -1069,6 +1104,11 @@
           <div class="service-icon"><img src="images/bubble.png" alt="Protective Packaging" loading="lazy"></div>
           <h4>Protective Packaging</h4>
           <p>Bubble wrap, foam rolls and sheets, corner protectors, edge boards, void fill, and cushioning materials to prevent damage during shipping and handling.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><img src="images/boxes.jpg" alt="Corrugated Boxes" loading="lazy"></div>
+          <h4>Corrugated Boxes</h4>
+          <p>Over 12,000 box styles — RSC, FOL, die-cut, and custom sizes. Single-wall, double-wall, and triple-wall with printing options for shipping, storage, and retail display.</p>
         </div>
         <div class="service-card">
           <div class="service-icon"><img src="images/stretch-film.png" alt="Stocking Programs" loading="lazy"></div>
@@ -1129,18 +1169,33 @@
     <div class="section-inner">
       <p class="section-label">Testimonials</p>
       <h2 class="section-title">What Customers Say</h2>
-      <div class="testimonials-grid">
-        <div class="testimonial-card">
-          <p class="testimonial-text">Neil took the time to understand our operation and recommended packaging that actually reduced our waste. Responsive, knowledgeable, and easy to work with.</p>
-          <p class="testimonial-author">Operations Manager <span class="testimonial-role">— Manufacturing Company</span></p>
+      <div class="testimonial-swiper">
+        <div class="testimonial-track" id="testimonialTrack">
+          <div class="testimonial-card">
+            <p class="testimonial-text">Neil took the time to understand our operation and recommended packaging that actually reduced our waste. Responsive, knowledgeable, and easy to work with.</p>
+            <p class="testimonial-author">Operations Manager <span class="testimonial-role">— Manufacturing Company</span></p>
+          </div>
+          <div class="testimonial-card">
+            <p class="testimonial-text">We switched to Neil after years with another supplier. Better pricing, faster delivery, and he always picks up the phone. That matters when you're running a warehouse.</p>
+            <p class="testimonial-author">Warehouse Director <span class="testimonial-role">— Distribution Center</span></p>
+          </div>
+          <div class="testimonial-card">
+            <p class="testimonial-text">Neil helped us set up a stocking program that cut our ordering time in half. He treats our business like it's his own.</p>
+            <p class="testimonial-author">Purchasing Manager <span class="testimonial-role">— Food Processing Facility</span></p>
+          </div>
         </div>
-        <div class="testimonial-card">
-          <p class="testimonial-text">We switched to Neil after years with another supplier. Better pricing, faster delivery, and he always picks up the phone. That matters when you're running a warehouse.</p>
-          <p class="testimonial-author">Warehouse Director <span class="testimonial-role">— Distribution Center</span></p>
-        </div>
-        <div class="testimonial-card">
-          <p class="testimonial-text">Neil helped us set up a stocking program that cut our ordering time in half. He treats our business like it's his own.</p>
-          <p class="testimonial-author">Purchasing Manager <span class="testimonial-role">— Food Processing Facility</span></p>
+        <div class="testimonial-nav">
+          <button class="testimonial-btn" onclick="swiperPrev()" aria-label="Previous testimonial">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <div class="testimonial-dots" id="testimonialDots">
+            <div class="testimonial-dot active" onclick="swiperGo(0)"></div>
+            <div class="testimonial-dot" onclick="swiperGo(1)"></div>
+            <div class="testimonial-dot" onclick="swiperGo(2)"></div>
+          </div>
+          <button class="testimonial-btn" onclick="swiperNext()" aria-label="Next testimonial">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
         </div>
       </div>
     </div>
@@ -1277,6 +1332,20 @@
     navLinks.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => navLinks.classList.remove('open'));
     });
+
+    // Testimonial swiper
+    let swiperIdx = 0;
+    const track = document.getElementById('testimonialTrack');
+    const dots = document.querySelectorAll('#testimonialDots .testimonial-dot');
+    const totalSlides = dots.length;
+    function swiperGo(i) {
+      swiperIdx = i;
+      track.style.transform = `translateX(-${i * 100}%)`;
+      dots.forEach((d, j) => d.classList.toggle('active', j === i));
+    }
+    function swiperNext() { swiperGo((swiperIdx + 1) % totalSlides); }
+    function swiperPrev() { swiperGo((swiperIdx - 1 + totalSlides) % totalSlides); }
+    setInterval(swiperNext, 6000);
 
     // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(a => {
