@@ -212,39 +212,40 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ═══ NAV ═══ */
+    /* ═══ NAV (Two-Tone Split) ═══ */
     .nav {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       z-index: 100;
-      background: var(--dark);
-      backdrop-filter: blur(12px);
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      height: 68px;
+      overflow: hidden;
       transition: var(--transition);
     }
     .nav.scrolled {
-      background: rgba(10, 26, 58, 0.97);
-      box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.3);
     }
-    .nav-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
+    .nav__left {
+      background: var(--charcoal);
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      height: 72px;
+      padding: 0 2rem;
+      clip-path: polygon(0 0, 100% 0, calc(100% - 24px) 100%, 0 100%);
+      min-width: 260px;
     }
     .nav-logo {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
       text-decoration: none;
       color: var(--white);
+      white-space: nowrap;
     }
     .nav-logo img {
-      height: 42px;
+      height: 40px;
       width: auto;
     }
     .nav-logo-text {
@@ -264,47 +265,151 @@
       color: var(--gray-400);
       letter-spacing: 0.3px;
     }
+    .nav__center {
+      background: var(--dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
     .nav-links {
       display: flex;
-      gap: 8px;
+      gap: 0;
       list-style: none;
     }
     .nav-links a {
-      color: rgba(255,255,255,0.75);
+      display: block;
+      color: rgba(255,255,255,0.65);
       text-decoration: none;
       font-size: 14px;
       font-weight: 500;
       padding: 8px 16px;
-      border-radius: 8px;
-      transition: var(--transition);
+      border-radius: 6px;
+      transition: color 0.2s, background 0.2s;
     }
     .nav-links a:hover {
       color: var(--white);
       background: rgba(255,255,255,0.08);
     }
+    .nav__right {
+      background: var(--green);
+      display: flex;
+      align-items: center;
+      padding: 0 2rem 0 2.5rem;
+      clip-path: polygon(24px 0, 100% 0, 100% 100%, 0 100%);
+    }
     .nav-cta {
-      background: var(--green) !important;
-      color: var(--white) !important;
-      font-weight: 600 !important;
+      color: var(--white);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 8px 20px;
+      border-radius: 6px;
+      background: rgba(0,0,0,0.15);
+      transition: background 0.2s;
+      white-space: nowrap;
     }
     .nav-cta:hover {
-      background: var(--green-light) !important;
+      background: rgba(0,0,0,0.25);
+    }
+    /* Mobile bar */
+    #nav-toggle { display: none; }
+    .nav__mobile-bar {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: var(--dark);
+      height: 60px;
+      padding: 0 20px;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav__mobile-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .nav__mobile-logo img {
+      height: 36px;
+      width: auto;
+    }
+    .nav__mobile-logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+    .nav__mobile-logo-text .name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--white);
+    }
+    .nav__mobile-logo-text .title {
+      font-size: 10px;
+      color: var(--gray-400);
     }
     .hamburger {
-      display: none;
-      background: none;
-      border: none;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
       cursor: pointer;
+      border: none;
+      background: transparent;
       padding: 8px;
     }
     .hamburger span {
       display: block;
-      width: 24px;
+      width: 22px;
       height: 2px;
       background: var(--white);
-      margin: 6px 0;
-      transition: var(--transition);
       border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    #nav-toggle:checked ~ .nav__mobile-bar .hamburger span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    #nav-toggle:checked ~ .nav__mobile-bar .hamburger span:nth-child(2) {
+      opacity: 0;
+    }
+    #nav-toggle:checked ~ .nav__mobile-bar .hamburger span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+    .nav__mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: var(--dark);
+      padding: 0.75rem 1.5rem 1.25rem;
+      position: fixed;
+      top: 60px;
+      left: 0;
+      right: 0;
+      z-index: 99;
+      border-bottom: 3px solid var(--green);
+    }
+    .nav__mobile-menu a {
+      display: block;
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 12px 8px;
+      border-radius: 6px;
+      transition: color 0.2s, background 0.2s;
+    }
+    .nav__mobile-menu a:hover {
+      color: var(--green);
+      background: rgba(78,162,78,0.08);
+      padding-left: 16px;
+    }
+    .nav__mobile-menu a:last-child {
+      color: var(--green);
+      font-weight: 700;
+      margin-top: 8px;
+    }
+    #nav-toggle:checked ~ .nav__mobile-menu {
+      display: flex;
     }
 
     /* ═══ HERO ═══ */
@@ -315,7 +420,7 @@
       background: linear-gradient(160deg, var(--dark) 0%, var(--charcoal) 50%, #122a52 100%);
       position: relative;
       overflow: hidden;
-      padding-top: 72px;
+      padding-top: 68px;
     }
     .hero::before {
       content: '';
@@ -955,19 +1060,8 @@
 
     /* ═══ MOBILE ═══ */
     @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .nav-links.open {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 72px;
-        left: 0;
-        right: 0;
-        background: var(--dark);
-        padding: 16px 24px;
-        border-top: 1px solid rgba(255,255,255,0.08);
-      }
-      .hamburger { display: block; }
+      .nav { display: none; }
+      .nav__mobile-bar { display: flex; }
 
       .hero-inner {
         grid-template-columns: 1fr;
@@ -1014,8 +1108,9 @@
 <body>
 
   <!-- NAV -->
+  <!-- NAV: Two-Tone Split (Desktop) -->
   <nav class="nav" id="nav">
-    <div class="nav-inner">
+    <div class="nav__left">
       <a href="#" class="nav-logo">
         <img src="https://palmerpackaging.com/images/web-logo-270.png" alt="Palmer Packaging">
         <div class="nav-logo-text">
@@ -1023,18 +1118,41 @@
           <span class="title">Authorized Sales Representative</span>
         </div>
       </a>
-      <ul class="nav-links" id="navLinks">
+    </div>
+    <div class="nav__center">
+      <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#services">Solutions</a></li>
         <li><a href="#why">Why Palmer</a></li>
         <li><a href="#faq">FAQ</a></li>
-        <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
       </ul>
-      <button class="hamburger" id="hamburger" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
+    </div>
+    <div class="nav__right">
+      <a href="#contact" class="nav-cta">Get in Touch</a>
     </div>
   </nav>
+
+  <!-- NAV: Mobile -->
+  <input type="checkbox" id="nav-toggle">
+  <div class="nav__mobile-bar">
+    <a href="#" class="nav__mobile-logo">
+      <img src="https://palmerpackaging.com/images/web-logo-270.png" alt="Palmer Packaging">
+      <div class="nav__mobile-logo-text">
+        <span class="name">Neil Curtis</span>
+        <span class="title">Authorized Sales Representative</span>
+      </div>
+    </a>
+    <label for="nav-toggle" class="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </label>
+  </div>
+  <div class="nav__mobile-menu">
+    <a href="#about" onclick="document.getElementById('nav-toggle').checked=false">About</a>
+    <a href="#services" onclick="document.getElementById('nav-toggle').checked=false">Solutions</a>
+    <a href="#why" onclick="document.getElementById('nav-toggle').checked=false">Why Palmer</a>
+    <a href="#faq" onclick="document.getElementById('nav-toggle').checked=false">FAQ</a>
+    <a href="#contact" onclick="document.getElementById('nav-toggle').checked=false">Get in Touch</a>
+  </div>
 
   <!-- HERO -->
   <section class="hero" id="hero">
@@ -1321,16 +1439,11 @@
       nav.classList.toggle('scrolled', window.scrollY > 50);
     });
 
-    // Mobile menu
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('navLinks');
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
-    });
-
-    // Close mobile menu on link click
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => navLinks.classList.remove('open'));
+    // Mobile menu: close on scroll-to-section
+    document.querySelectorAll('.nav__mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('nav-toggle').checked = false;
+      });
     });
 
     // Testimonial swiper
