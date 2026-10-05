@@ -61,23 +61,20 @@
         "@type": "Organization",
         "@id": "https://ncpalmerpack.com/#palmer-packaging",
         "name": "Palmer Packaging, Inc.",
-        "url": "https://palmerpackaging.com",
-        "logo": "https://ncpalmerpack.com/images/logo.png",
+        "url": "https://ncpalmerpack.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://ncpalmerpack.com/images/logo.png"
+        },
         "description": "One of the nation's leading industrial packaging suppliers with 35+ years of experience, headquartered in Addison, IL. Company-owned fleet delivers directly to Chicago and all surrounding suburbs.",
-        "address": [
-          {
-            "@type": "PostalAddress",
-            "addressLocality": "Addison",
-            "addressRegion": "IL",
-            "addressCountry": "US"
-          },
-          {
-            "@type": "PostalAddress",
-            "addressLocality": "Tolleson",
-            "addressRegion": "AZ",
-            "addressCountry": "US"
-          }
-        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "423 S. Grace Street",
+          "addressLocality": "Addison",
+          "addressRegion": "IL",
+          "postalCode": "60101",
+          "addressCountry": "US"
+        },
         "areaServed": {
           "@type": "Country",
           "name": "United States"
@@ -1131,7 +1128,7 @@
   <nav class="nav" id="nav">
     <div class="nav__left">
       <a href="#" class="nav-logo">
-        <img src="https://palmerpackaging.com/images/web-logo-270.png" alt="Palmer Packaging">
+        <img src="images/logo.png" alt="Palmer Packaging">
         <div class="nav-logo-text">
           <span class="name">Neil Curtis</span>
           <span class="title">Authorized Sales Representative</span>
@@ -1154,7 +1151,7 @@
   <!-- NAV: Mobile Top Bar -->
   <div class="nav__mobile-bar">
     <a href="#" class="nav__mobile-logo">
-      <img src="https://palmerpackaging.com/images/web-logo-270.png" alt="Palmer Packaging">
+      <img src="images/logo.png" alt="Palmer Packaging">
     </a>
     <div class="nav__mobile-logo-text">
       <span class="name">Neil Curtis</span>
@@ -1468,7 +1465,7 @@
   <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-logo">
-      <img src="https://palmerpackaging.com/images/web-logo-270.png" alt="Palmer Packaging">
+      <img src="images/logo.png" alt="Palmer Packaging">
     </div>
     <p>Neil Curtis — Authorized Sales Representative, Palmer Packaging, Inc.</p>
     <p style="margin-top: 8px;">&copy; 2026 All rights reserved.</p>
