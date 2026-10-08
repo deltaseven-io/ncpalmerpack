@@ -157,7 +157,7 @@
     .nav.scrolled { box-shadow: var(--shadow-lg); }
     .nav__left { display: flex; align-items: center; }
     .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-    .nav-logo img { height: 40px; width: 40px; border-radius: 8px; }
+    .nav-logo img { height: 40px; width: auto; }
     .nav-logo-text { display: flex; flex-direction: column; line-height: 1.2; }
      font-size: 16px; font-weight: 700; letter-spacing: 0.5px; color: var(--white); }
     .nav-logo-text .name { font-size: 15px; font-weight: 600; letter-spacing: 0.5px; color: var(--white); }
@@ -172,7 +172,7 @@
 
     /* MOBILE NAV */
     .nav__mobile-bar { display: none; position: fixed; top: 0; left: 0; right: 0; height: 56px; background: var(--dark); z-index: 1000; padding: 0 16px; align-items: center; gap: 10px; }
-    .nav__mobile-logo img { height: 32px; width: 32px; border-radius: 6px; }
+    .nav__mobile-logo img { height: 40px; width: auto; }
     .nav__mobile-logo-text { display: flex; flex-direction: column; line-height: 1.15; }
     .nav__mobile-logo-text .name { font-size: 14px; font-weight: 600; color: var(--white); }
     .nav__mobile-logo-text .title { font-size: 10px; color: var(--gray-400); }
@@ -187,7 +187,7 @@
     .hero h1 .accent { color: var(--green-light); }
     .hero-sub { font-size: 18px; color: var(--gray-400); max-width: 700px; margin: 0 auto 32px; line-height: 1.7; }
     .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: 10px; font-size: 15px; font-weight: 600; text-decoration: none; transition: var(--transition); cursor: pointer; border: none; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 28px; border-radius: 10px; font-size: 15px; font-weight: 600; text-decoration: none; transition: var(--transition); cursor: pointer; border: none; white-space: nowrap; }
     .btn-primary { background: var(--green); color: var(--white); }
     .btn-primary:hover { background: var(--green-dark); transform: translateY(-1px); }
     .btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.2); }
