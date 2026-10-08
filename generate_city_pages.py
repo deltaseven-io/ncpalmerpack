@@ -1,0 +1,740 @@
+import os
+
+CITIES = {
+    "elk-grove-village": {
+        "name": "Elk Grove Village",
+        "state": "IL",
+        "zip": "60007",
+        "slug": "elk-grove-village",
+        "geo_lat": "42.0040",
+        "geo_lng": "-87.9703",
+        "industry_note": "One of the largest industrial parks in North America calls Elk Grove Village home — with over 3,600 businesses and 100,000 workers in the Elk Grove Village Industrial Park alone.",
+        "hero_h1": "Packaging Supplies in Elk Grove Village",
+        "hero_sub": "Palmer Packaging delivers corrugated boxes, stretch film, shrink wrap, strapping, and 12,000+ products to Elk Grove Village businesses. Company-owned fleet, below-retail pricing, next day delivery.",
+        "meta_desc": "Packaging supplies delivered to Elk Grove Village, IL — corrugated boxes, stretch film, shrink wrap, strapping, bubble wrap, poly bags, and 12,000+ products. Company-owned fleet, below-retail pricing. Contact Neil Curtis at (630) 628-6500.",
+        "about_p1": "Elk Grove Village is home to one of the largest industrial parks in North America. With over 3,600 businesses operating in the area, demand for reliable packaging supply runs deep. Neil Curtis and Palmer Packaging deliver corrugated boxes, stretch film, protective packaging, and thousands more products directly to Elk Grove Village operations — on Palmer's own trucks, at distributor pricing.",
+        "about_p2": "Whether you're shipping from a warehouse off Busse Road or running a manufacturing line near Elmhurst Road, Neil will evaluate your packaging spend, cut through the retail markup, and set up a stocking program that keeps your supplies on hand without tying up capital.",
+        "nearby": ["addison", "bensenville", "wood-dale", "itasca", "franklin-park"],
+        "faq_area": "Elk Grove Village and all surrounding suburbs including Addison, Bensenville, Wood Dale, Itasca, Franklin Park, Schaumburg, and the greater Chicago area",
+    },
+    "addison": {
+        "name": "Addison",
+        "state": "IL",
+        "zip": "60101",
+        "slug": "addison",
+        "geo_lat": "41.9317",
+        "geo_lng": "-87.9889",
+        "industry_note": "Palmer Packaging is headquartered right here in Addison, IL — at 423 S. Grace Street. That means Addison businesses get the shortest delivery times and the most responsive service of anyone in the region.",
+        "hero_h1": "Packaging Supplies in Addison",
+        "hero_sub": "Palmer Packaging is headquartered in Addison, IL. Corrugated boxes, stretch film, shrink wrap, strapping, and 12,000+ products — delivered from right down the road at below-retail pricing.",
+        "meta_desc": "Palmer Packaging is headquartered in Addison, IL — corrugated boxes, stretch film, shrink wrap, strapping, bubble wrap, poly bags, and 12,000+ products. Below-retail pricing, same day availability. Contact Neil Curtis at (630) 628-6500.",
+        "about_p1": "Palmer Packaging has been headquartered in Addison, IL since 1989. With the warehouse and offices at 423 S. Grace Street, Addison businesses are closer to the source than anyone — which means shorter delivery windows, same-day availability on most products, and a sales rep who can walk your facility in person.",
+        "about_p2": "Neil Curtis serves Addison manufacturers, distributors, and warehouses with over 12,000 stocked products at below-retail distributor pricing. From corrugated boxes and stretch film to stocking programs and equipment service, Palmer has it covered — and it all ships from right here.",
+        "nearby": ["elk-grove-village", "bensenville", "wood-dale", "itasca", "franklin-park"],
+        "faq_area": "Addison and all surrounding suburbs including Elk Grove Village, Bensenville, Wood Dale, Itasca, Franklin Park, and the greater Chicago area",
+    },
+    "bensenville": {
+        "name": "Bensenville",
+        "state": "IL",
+        "zip": "60106",
+        "slug": "bensenville",
+        "geo_lat": "41.9553",
+        "geo_lng": "-87.9401",
+        "industry_note": "Bensenville sits at a logistics crossroads — minutes from O'Hare International Airport and surrounded by major freight corridors. Businesses here move product fast, and they need a packaging supplier that keeps up.",
+        "hero_h1": "Packaging Supplies in Bensenville",
+        "hero_sub": "Palmer Packaging delivers corrugated boxes, stretch film, shrink wrap, strapping, and 12,000+ products to Bensenville businesses. Company-owned fleet from nearby Addison, below-retail pricing.",
+        "meta_desc": "Packaging supplies delivered to Bensenville, IL — corrugated boxes, stretch film, shrink wrap, strapping, bubble wrap, poly bags, and 12,000+ products. Near O'Hare, fast delivery from Addison HQ. Contact Neil Curtis at (630) 628-6500.",
+        "about_p1": "Bensenville sits at a logistics crossroads — minutes from O'Hare International Airport and surrounded by major freight corridors. When your business moves product fast, you need a packaging supplier that keeps pace. Palmer Packaging delivers from their Addison headquarters, just a few miles away, on their own company-owned trucks.",
+        "about_p2": "Neil Curtis works with Bensenville warehouses, distribution centers, and manufacturers to deliver the right packaging at the right price. From corrugated boxes and stretch film to custom stocking programs, Palmer stocks over 12,000 products and delivers next day at below-retail pricing.",
+        "nearby": ["elk-grove-village", "addison", "wood-dale", "itasca", "franklin-park"],
+        "faq_area": "Bensenville and all surrounding suburbs including Elk Grove Village, Addison, Wood Dale, Itasca, Franklin Park, and the greater Chicago area",
+    },
+    "wood-dale": {
+        "name": "Wood Dale",
+        "state": "IL",
+        "zip": "60191",
+        "slug": "wood-dale",
+        "geo_lat": "41.9633",
+        "geo_lng": "-87.9790",
+        "industry_note": "Wood Dale has a strong concentration of manufacturing and logistics operations, and its position along the I-290 and Route 83 corridors makes it a hub for businesses that ship daily.",
+        "hero_h1": "Packaging Supplies in Wood Dale",
+        "hero_sub": "Palmer Packaging delivers corrugated boxes, stretch film, shrink wrap, strapping, and 12,000+ products to Wood Dale businesses. Company-owned fleet, below-retail pricing, next day delivery.",
+        "meta_desc": "Packaging supplies delivered to Wood Dale, IL — corrugated boxes, stretch film, shrink wrap, strapping, bubble wrap, poly bags, and 12,000+ products. Company-owned fleet, below-retail pricing. Contact Neil Curtis at (630) 628-6500.",
+        "about_p1": "Wood Dale's manufacturing and logistics corridor keeps packaging demand high year-round. Palmer Packaging delivers directly to Wood Dale operations on their own company-owned fleet from nearby Addison — no third-party carriers, no delays. Over 12,000 products in stock and ready for next day delivery.",
+        "about_p2": "Neil Curtis helps Wood Dale businesses reduce their packaging spend with distributor pricing, custom stocking programs, and packaging equipment service. Whether you need a truckload of corrugated boxes or a single roll of stretch film, Neil picks up the phone and gets it handled.",
+        "nearby": ["elk-grove-village", "addison", "bensenville", "itasca", "franklin-park"],
+        "faq_area": "Wood Dale and all surrounding suburbs including Elk Grove Village, Addison, Bensenville, Itasca, Franklin Park, and the greater Chicago area",
+    },
+    "itasca": {
+        "name": "Itasca",
+        "state": "IL",
+        "zip": "60143",
+        "slug": "itasca",
+        "geo_lat": "41.9753",
+        "geo_lng": "-88.0073",
+        "industry_note": "Itasca is home to a diverse mix of corporate offices and industrial operations, with strong demand for packaging from businesses along the I-290 corridor and surrounding business parks.",
+        "hero_h1": "Packaging Supplies in Itasca",
+        "hero_sub": "Palmer Packaging delivers corrugated boxes, stretch film, shrink wrap, strapping, and 12,000+ products to Itasca businesses. Company-owned fleet from nearby Addison, below-retail pricing.",
+        "meta_desc": "Packaging supplies delivered to Itasca, IL — corrugated boxes, stretch film, shrink wrap, strapping, bubble wrap, poly bags, and 12,000+ products. Company-owned fleet, below-retail pricing. Contact Neil Curtis at (630) 628-6500.",
+        "about_p1": "Itasca's mix of corporate campuses and industrial operations creates steady demand for reliable packaging supply. Palmer Packaging delivers from their Addison headquarters — just minutes away — on company-owned trucks. Over 12,000 products in stock for next day delivery at distributor pricing.",
+        "about_p2": "Neil Curtis serves Itasca businesses with packaging solutions that lower costs and simplify ordering. Custom stocking programs, equipment service, and a full line of corrugated boxes, stretch film, protective packaging, and more — all at below-retail pricing with no minimums and no hassle.",
+        "nearby": ["elk-grove-village", "addison", "bensenville", "wood-dale", "franklin-park"],
+        "faq_area": "Itasca and all surrounding suburbs including Elk Grove Village, Addison, Bensenville, Wood Dale, Franklin Park, and the greater Chicago area",
+    },
+    "franklin-park": {
+        "name": "Franklin Park",
+        "state": "IL",
+        "zip": "60131",
+        "slug": "franklin-park",
+        "geo_lat": "41.9353",
+        "geo_lng": "-87.8656",
+        "industry_note": "Franklin Park is a manufacturing stronghold on Chicago's western edge, with hundreds of industrial operations and easy access to O'Hare, I-294, and major rail lines.",
+        "hero_h1": "Packaging Supplies in Franklin Park",
+        "hero_sub": "Palmer Packaging delivers corrugated boxes, stretch film, shrink wrap, strapping, and 12,000+ products to Franklin Park businesses. Company-owned fleet, below-retail pricing, next day delivery.",
+        "meta_desc": "Packaging supplies delivered to Franklin Park, IL — corrugated boxes, stretch film, shrink wrap, strapping, bubble wrap, poly bags, and 12,000+ products. Company-owned fleet, below-retail pricing. Contact Neil Curtis at (630) 628-6500.",
+        "about_p1": "Franklin Park is a manufacturing stronghold on Chicago's western edge — hundreds of industrial operations with easy access to O'Hare, I-294, and major rail lines. Palmer Packaging delivers directly to Franklin Park businesses on their own company-owned fleet from nearby Addison, with over 12,000 products in stock for next day delivery.",
+        "about_p2": "Neil Curtis helps Franklin Park manufacturers and distributors lower their packaging costs with distributor pricing, custom stocking programs, and hands-on equipment service. From corrugated boxes and stretch film to poly bags and void fill systems, Palmer has everything you need — and Neil will make sure you're paying less than you are now.",
+        "nearby": ["elk-grove-village", "addison", "bensenville", "wood-dale", "itasca"],
+        "faq_area": "Franklin Park and all surrounding suburbs including Elk Grove Village, Addison, Bensenville, Wood Dale, Itasca, and the greater Chicago area",
+    },
+}
+
+CITY_DISPLAY = {slug: c["name"] for slug, c in CITIES.items()}
+
+def nearby_links_html(nearby_slugs):
+    links = []
+    for s in nearby_slugs:
+        links.append(f'<a href="/{s}.html">{CITY_DISPLAY[s]}</a>')
+    return " · ".join(links)
+
+
+def generate_page(slug, city):
+    nearby_html = nearby_links_html(city["nearby"])
+    today = "2026-10-08"
+
+    return f'''<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-D4MFC3TMYW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){{dataLayer.push(arguments);}}
+    gtag('js', new Date());
+    gtag('config', 'G-D4MFC3TMYW');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Packaging Supplies in {city["name"]}, IL | Palmer Packaging — Neil Curtis</title>
+  <meta name="description" content="{city["meta_desc"]}">
+  <meta name="keywords" content="packaging supplies {city["name"]}, corrugated boxes {city["name"]}, stretch film {city["name"]}, shrink wrap {city["name"]}, packaging supplier {city["name"]} IL, Palmer Packaging {city["name"]}, industrial packaging {city["name"]}, bubble wrap, poly bags, strapping, packaging tape, Neil Curtis">
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" sizes="192x192" href="/favicon-192.png">
+  <link rel="canonical" href="https://ncpalmerpack.com/{slug}.html">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+  <meta property="og:title" content="Packaging Supplies in {city["name"]}, IL | Palmer Packaging">
+  <meta property="og:description" content="{city["hero_sub"]}">
+  <meta property="og:image" content="https://ncpalmerpack.com/images/og-image.png">
+  <meta property="og:url" content="https://ncpalmerpack.com/{slug}.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Packaging Supplies in {city["name"]}, IL | Palmer Packaging">
+  <meta name="twitter:description" content="{city["hero_sub"]}">
+  <meta name="twitter:image" content="https://ncpalmerpack.com/images/og-image.png">
+  <script type="application/ld+json">
+  {{
+    "@context": "https://schema.org",
+    "@graph": [
+      {{
+        "@type": "LocalBusiness",
+        "@id": "https://ncpalmerpack.com/{slug}.html#business",
+        "name": "Palmer Packaging — {city["name"]}",
+        "description": "Industrial packaging supplies delivered to {city["name"]}, IL. Corrugated boxes, stretch film, shrink wrap, strapping, bubble wrap, poly bags, and 12,000+ products at below-retail distributor pricing.",
+        "url": "https://ncpalmerpack.com/{slug}.html",
+        "telephone": "+1-630-628-6500",
+        "email": "ncpalmerpack@gmail.com",
+        "image": "https://ncpalmerpack.com/images/logo.png",
+        "address": {{
+          "@type": "PostalAddress",
+          "streetAddress": "423 S. Grace Street",
+          "addressLocality": "Addison",
+          "addressRegion": "IL",
+          "postalCode": "60101",
+          "addressCountry": "US"
+        }},
+        "geo": {{
+          "@type": "GeoCoordinates",
+          "latitude": {city["geo_lat"]},
+          "longitude": {city["geo_lng"]}
+        }},
+        "areaServed": {{
+          "@type": "City",
+          "name": "{city["name"]}",
+          "containedInPlace": {{
+            "@type": "State",
+            "name": "Illinois"
+          }}
+        }},
+        "priceRange": "$$",
+        "openingHours": "Mo-Fr 08:00-17:00",
+        "parentOrganization": {{
+          "@type": "Organization",
+          "name": "Palmer Packaging, Inc.",
+          "@id": "https://ncpalmerpack.com/#palmer-packaging"
+        }},
+        "employee": {{
+          "@type": "Person",
+          "name": "Neil Curtis",
+          "@id": "https://ncpalmerpack.com/#neil-curtis"
+        }}
+      }},
+      {{
+        "@type": "Service",
+        "name": "Packaging Supply & Delivery — {city["name"]}",
+        "provider": {{ "@id": "https://ncpalmerpack.com/{slug}.html#business" }},
+        "areaServed": {{
+          "@type": "City",
+          "name": "{city["name"]}",
+          "containedInPlace": {{ "@type": "State", "name": "Illinois" }}
+        }},
+        "serviceType": ["Packaging Supply", "Corrugated Boxes", "Stretch Film", "Shrink Film", "Strapping", "Protective Packaging", "Poly Bags", "Packaging Tape", "Equipment Service"],
+        "description": "Full-line packaging supply with company-owned fleet delivery to {city["name"]}, IL. 12,000+ products at below-retail distributor pricing."
+      }},
+      {{
+        "@type": "FAQPage",
+        "@id": "https://ncpalmerpack.com/{slug}.html#faq",
+        "mainEntity": [
+          {{
+            "@type": "Question",
+            "name": "Does Palmer Packaging deliver to {city["name"]}?",
+            "acceptedAnswer": {{
+              "@type": "Answer",
+              "text": "Yes. Palmer Packaging delivers directly to {city["name"]}, IL on their company-owned fleet from their Addison headquarters. Most orders ship next business day."
+            }}
+          }},
+          {{
+            "@type": "Question",
+            "name": "What packaging products are available in {city["name"]}?",
+            "acceptedAnswer": {{
+              "@type": "Answer",
+              "text": "Palmer Packaging stocks over 12,000 products including corrugated boxes, stretch film, shrink wrap, strapping, bubble wrap, poly bags, packaging tape, edge protectors, kraft paper, mailing tubes, and janitorial supplies — all at below-retail distributor pricing."
+            }}
+          }},
+          {{
+            "@type": "Question",
+            "name": "How do I get a packaging quote for my {city["name"]} business?",
+            "acceptedAnswer": {{
+              "@type": "Answer",
+              "text": "Contact Neil Curtis directly at (630) 628-6500 or ncpalmerpack@gmail.com. He is available Monday through Friday, 8am to 5pm CST and typically responds the same business day."
+            }}
+          }}
+        ]
+      }}
+    ]
+  }}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {{ margin: 0; padding: 0; box-sizing: border-box; }}
+
+    :root {{
+      --charcoal: #0F2044;
+      --dark: #0A1A3A;
+      --green: #4EA24E;
+      --green-light: #5CB85C;
+      --green-dark: #3D8B3D;
+      --gray-50: #F8F9FA;
+      --gray-100: #F1F3F5;
+      --gray-200: #E9ECEF;
+      --gray-300: #DEE2E6;
+      --gray-400: #ADB5BD;
+      --gray-600: #6C757D;
+      --gray-800: #343A40;
+      --white: #FFFFFF;
+      --text: #212529;
+      --text-light: #495057;
+      --radius: 12px;
+      --shadow: 0 4px 24px rgba(0,0,0,0.08);
+      --shadow-lg: 0 12px 40px rgba(0,0,0,0.12);
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }}
+
+    html {{ scroll-behavior: smooth; }}
+    body {{ font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); background: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; }}
+
+    /* NAV */
+    .nav {{ display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 68px; background: var(--dark); position: fixed; top: 0; left: 0; right: 0; z-index: 1000; transition: var(--transition); }}
+    .nav.scrolled {{ box-shadow: var(--shadow-lg); }}
+    .nav__left {{ display: flex; align-items: center; }}
+    .nav-logo {{ display: flex; align-items: center; gap: 12px; text-decoration: none; }}
+    .nav-logo img {{ height: 40px; width: 40px; border-radius: 8px; }}
+    .nav-logo-text {{ display: flex; flex-direction: column; line-height: 1.2; }}
+    .nav-logo-text .brand-name {{ font-size: 16px; font-weight: 700; letter-spacing: 0.5px; color: var(--white); }}
+    .nav-logo-text .name {{ font-size: 13px; font-weight: 600; letter-spacing: 0.5px; color: var(--gray-300); }}
+    .nav-logo-text .title {{ font-size: 11px; color: var(--gray-400); }}
+    .nav__center {{ display: flex; align-items: center; }}
+    .nav-links {{ display: flex; list-style: none; gap: 32px; }}
+    .nav-links a {{ text-decoration: none; color: var(--gray-400); font-size: 14px; font-weight: 500; transition: var(--transition); }}
+    .nav-links a:hover {{ color: var(--white); }}
+    .nav__right {{ display: flex; align-items: center; }}
+    .nav-cta {{ background: var(--green); color: var(--white); text-decoration: none; padding: 8px 20px; border-radius: 8px; font-size: 14px; font-weight: 600; transition: var(--transition); }}
+    .nav-cta:hover {{ background: var(--green-dark); }}
+
+    /* MOBILE NAV */
+    .nav__mobile-bar {{ display: none; position: fixed; top: 0; left: 0; right: 0; height: 56px; background: var(--dark); z-index: 1000; padding: 0 16px; align-items: center; gap: 10px; }}
+    .nav__mobile-logo img {{ height: 32px; width: 32px; border-radius: 6px; }}
+    .nav__mobile-logo-text {{ display: flex; flex-direction: column; line-height: 1.15; }}
+    .nav__mobile-logo-text .brand-name {{ font-size: 14px; font-weight: 700; color: var(--white); letter-spacing: 0.3px; }}
+    .nav__mobile-logo-text .name {{ font-size: 12px; font-weight: 600; color: var(--gray-300); }}
+    .nav__mobile-logo-text .title {{ font-size: 10px; color: var(--gray-400); }}
+    .nav__mobile-bottom {{ display: none; position: fixed; bottom: 0; left: 0; right: 0; height: 60px; background: var(--dark); z-index: 1000; justify-content: space-around; align-items: center; border-top: 1px solid rgba(255,255,255,0.08); }}
+    .nav__tab {{ display: flex; flex-direction: column; align-items: center; gap: 2px; text-decoration: none; color: var(--gray-400); font-size: 10px; font-weight: 500; transition: var(--transition); padding: 6px 8px; }}
+    .nav__tab--active, .nav__tab:hover {{ color: var(--green-light); }}
+
+    /* HERO */
+    .hero {{ padding: 140px 40px 80px; background: linear-gradient(135deg, var(--dark) 0%, var(--charcoal) 100%); color: var(--white); }}
+    .hero-inner {{ max-width: 900px; margin: 0 auto; text-align: center; }}
+    .hero h1 {{ font-size: 48px; font-weight: 800; line-height: 1.1; margin-bottom: 20px; }}
+    .hero h1 .accent {{ color: var(--green-light); }}
+    .hero-sub {{ font-size: 18px; color: var(--gray-400); max-width: 700px; margin: 0 auto 32px; line-height: 1.7; }}
+    .hero-actions {{ display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }}
+    .btn {{ display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: 10px; font-size: 15px; font-weight: 600; text-decoration: none; transition: var(--transition); cursor: pointer; border: none; }}
+    .btn-primary {{ background: var(--green); color: var(--white); }}
+    .btn-primary:hover {{ background: var(--green-dark); transform: translateY(-1px); }}
+    .btn-outline {{ background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.2); }}
+    .btn-outline:hover {{ border-color: var(--white); }}
+
+    /* SECTIONS */
+    .section-inner {{ max-width: 1000px; margin: 0 auto; }}
+    .section-label {{ font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--green); margin-bottom: 12px; }}
+    .section-title {{ font-size: 32px; font-weight: 800; line-height: 1.2; color: var(--text); margin-bottom: 16px; }}
+    .section-desc {{ font-size: 16px; color: var(--text-light); max-width: 700px; margin-bottom: 40px; line-height: 1.7; }}
+
+    /* ABOUT */
+    .about {{ padding: 80px 40px; background: var(--white); }}
+    .about-text p {{ font-size: 16px; color: var(--text-light); line-height: 1.8; margin-bottom: 16px; }}
+    .about-highlights {{ list-style: none; margin-top: 24px; }}
+    .about-highlights li {{ padding: 6px 0; font-size: 15px; color: var(--text); }}
+    .check {{ color: var(--green); font-weight: 700; margin-right: 8px; }}
+
+    /* SERVICES */
+    .services {{ padding: 80px 40px; background: var(--gray-50); }}
+    .services-grid {{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }}
+    .service-card {{ background: var(--white); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow); transition: var(--transition); }}
+    .service-card:hover {{ transform: translateY(-4px); box-shadow: var(--shadow-lg); }}
+    .service-icon {{ width: 100%; height: 140px; border-radius: 8px; overflow: hidden; margin-bottom: 16px; }}
+    .service-icon img {{ width: 100%; height: 100%; object-fit: cover; }}
+    .service-card h4 {{ font-size: 17px; font-weight: 700; margin-bottom: 8px; color: var(--text); }}
+    .service-card p {{ font-size: 14px; color: var(--text-light); line-height: 1.6; }}
+
+    /* WHY PALMER */
+    .why {{ padding: 80px 40px; background: var(--dark); color: var(--white); text-align: center; }}
+    .why .section-title {{ color: var(--white); }}
+    .why .section-desc {{ color: var(--gray-400); margin-left: auto; margin-right: auto; }}
+    .why-grid {{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; max-width: 900px; margin: 0 auto; }}
+    .why-item {{ text-align: center; }}
+    .why-num {{ font-size: 42px; font-weight: 800; color: var(--green-light); }}
+    .why-label {{ font-size: 14px; color: var(--gray-400); margin-top: 4px; }}
+
+    /* FAQ */
+    .faq {{ padding: 80px 40px; background: var(--white); }}
+    .faq-list {{ max-width: 700px; }}
+    .faq-item {{ border-bottom: 1px solid var(--gray-200); }}
+    .faq-question {{ display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 20px 0; background: none; border: none; cursor: pointer; font-size: 16px; font-weight: 600; color: var(--text); text-align: left; }}
+    .faq-chevron {{ width: 20px; height: 20px; flex-shrink: 0; transition: var(--transition); }}
+    .faq-item.open .faq-chevron {{ transform: rotate(180deg); }}
+    .faq-answer {{ max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }}
+    .faq-answer p {{ padding: 0 0 20px; font-size: 15px; color: var(--text-light); line-height: 1.7; }}
+
+    /* CONTACT */
+    .contact {{ padding: 80px 40px; background: var(--gray-50); }}
+    .contact-grid {{ display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }}
+    .contact-item {{ display: flex; gap: 16px; align-items: flex-start; margin-bottom: 24px; }}
+    .contact-icon {{ font-size: 24px; }}
+    .contact-item h4 {{ font-size: 14px; font-weight: 700; margin-bottom: 4px; }}
+    .contact-item a, .contact-item p {{ font-size: 15px; color: var(--text-light); text-decoration: none; }}
+    .contact-item a:hover {{ color: var(--green); }}
+    .contact-form {{ display: flex; flex-direction: column; gap: 12px; }}
+    .contact-form input, .contact-form textarea {{ padding: 14px 16px; border: 1px solid var(--gray-200); border-radius: 8px; font-size: 15px; font-family: inherit; background: var(--white); }}
+    .contact-form textarea {{ min-height: 120px; resize: vertical; }}
+    .form-row {{ display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }}
+
+    /* NEARBY */
+    .nearby {{ padding: 40px; background: var(--white); text-align: center; border-top: 1px solid var(--gray-200); }}
+    .nearby p {{ font-size: 14px; color: var(--text-light); }}
+    .nearby a {{ color: var(--green); text-decoration: none; font-weight: 600; }}
+    .nearby a:hover {{ text-decoration: underline; }}
+
+    /* FOOTER */
+    .footer {{ background: var(--dark); color: var(--gray-400); text-align: center; padding: 40px 20px; font-size: 14px; }}
+    .footer-logo img {{ height: 40px; margin-bottom: 12px; border-radius: 8px; }}
+
+    /* MOBILE */
+    @media (max-width: 768px) {{
+      .nav {{ display: none; }}
+      .nav__mobile-bar {{ display: flex; }}
+      .nav__mobile-bottom {{ display: flex; }}
+      .hero {{ padding: 80px 20px 48px; }}
+      .hero h1 {{ font-size: 32px; }}
+      .hero-sub {{ font-size: 15px; }}
+      .about, .services, .faq, .contact {{ padding: 48px 20px; }}
+      .services-grid {{ grid-template-columns: 1fr; }}
+      .why-grid {{ grid-template-columns: repeat(2, 1fr); gap: 20px; }}
+      .contact-grid {{ grid-template-columns: 1fr; }}
+      .section-title {{ font-size: 24px; }}
+      .why {{ padding: 32px 20px; }}
+      body {{ padding-bottom: 60px; }}
+    }}
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header>
+  <nav class="nav" id="nav">
+    <div class="nav__left">
+      <a href="/" class="nav-logo">
+        <img src="images/logo.png" alt="Palmer Packaging">
+        <div class="nav-logo-text">
+          <span class="brand-name">Palmer Packaging</span>
+          <span class="name">Neil Curtis</span>
+          <span class="title">Authorized Sales Representative</span>
+        </div>
+      </a>
+    </div>
+    <div class="nav__center">
+      <ul class="nav-links">
+        <li><a href="/#about">About</a></li>
+        <li><a href="/#services">Solutions</a></li>
+        <li><a href="/#why">Why Palmer</a></li>
+        <li><a href="/#faq">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="nav__right">
+      <a href="#contact" class="nav-cta">Get in Touch</a>
+    </div>
+  </nav>
+
+  <div class="nav__mobile-bar">
+    <a href="/" class="nav__mobile-logo">
+      <img src="images/logo.png" alt="Palmer Packaging">
+    </a>
+    <div class="nav__mobile-logo-text">
+      <span class="brand-name">Palmer Packaging</span>
+      <span class="name">Neil Curtis</span>
+      <span class="title">Authorized Sales Representative</span>
+    </div>
+  </div>
+
+  <div class="nav__mobile-bottom">
+    <a href="/#about" class="nav__tab">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <span>About</span>
+    </a>
+    <a href="#services" class="nav__tab">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+      <span>Solutions</span>
+    </a>
+    <a href="#why" class="nav__tab">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      <span>Why us</span>
+    </a>
+    <a href="#faq" class="nav__tab">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <span>FAQ</span>
+    </a>
+    <a href="#contact" class="nav__tab nav__tab--active">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      <span>Contact</span>
+    </a>
+  </div>
+  </header>
+
+  <main>
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-inner">
+      <h1>{city["hero_h1"].replace(city["name"], f'{city["name"]} <span class="accent">IL</span>')}</h1>
+      <p class="hero-sub">{city["hero_sub"]}</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Contact Neil
+        </a>
+        <a href="#services" class="btn btn-outline">View Solutions</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT / CITY INTRO -->
+  <section class="about" id="about">
+    <div class="section-inner">
+      <p class="section-label">Packaging in {city["name"]}</p>
+      <h2 class="section-title">Palmer Packaging Delivers to {city["name"]}</h2>
+      <div class="about-text">
+        <p>{city["about_p1"]}</p>
+        <p>{city["about_p2"]}</p>
+        <ul class="about-highlights">
+          <li><span class="check">✓</span> 12,000+ products in stock — next day delivery</li>
+          <li><span class="check">✓</span> Company-owned fleet — direct to {city["name"]}</li>
+          <li><span class="check">✓</span> Below-retail distributor pricing</li>
+          <li><span class="check">✓</span> Custom stocking programs & vendor-managed inventory</li>
+          <li><span class="check">✓</span> Equipment sales, installation & service</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="section-inner">
+      <p class="section-label">Solutions</p>
+      <h2 class="section-title">Packaging Solutions for {city["name"]} Businesses</h2>
+      <p class="section-desc">Over 12,000 products in stock and ready for next day delivery to {city["name"]} — all priced below retail.</p>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon"><img src="images/design.jpg" alt="Equipment & Service" loading="lazy"></div>
+          <h4>Equipment & Service</h4>
+          <p>Semi-auto and automatic strapping machines, stretch wrap equipment, tape dispensers, and heat seal systems — plus installation, repair, and preventive maintenance.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><img src="images/bubble.png" alt="Protective Packaging" loading="lazy"></div>
+          <h4>Protective Packaging</h4>
+          <p>Bubble wrap, foam rolls and sheets, corner protectors, edge boards, void fill, and cushioning materials to prevent damage during shipping and handling.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><img src="images/boxes.jpg" alt="Corrugated Boxes" loading="lazy"></div>
+          <h4>Corrugated Boxes</h4>
+          <p>Over 12,000 box styles — RSC, FOL, die-cut, and custom sizes. Single-wall, double-wall, and triple-wall with printing options. Distributor pricing saves you real money.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><img src="images/chart.jpg" alt="Stocking Programs" loading="lazy"></div>
+          <h4>Stocking Programs</h4>
+          <p>Vendor-managed inventory and just-in-time delivery programs. Keep stretch film, boxes, tape, and other supplies stocked at locked-in pricing.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><img src="images/suport.jpg" alt="Company-Owned Fleet" loading="lazy"></div>
+          <h4>Company-Owned Fleet</h4>
+          <p>Palmer's own trucks deliver direct to {city["name"]} — no third-party delays, no surprises, reliable local service.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><img src="images/shrink-film.png" alt="Janitorial & Facility Supplies" loading="lazy"></div>
+          <h4>Janitorial & Facility Supplies</h4>
+          <p>Trash liners, cleaning supplies, and facility maintenance products — everything you need to keep your operation running smoothly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY PALMER -->
+  <section class="why" id="why">
+    <div class="section-inner">
+      <p class="section-label" style="color: var(--green-light);">Why Palmer Packaging</p>
+      <h2 class="section-title">Built on Experience.<br>Driven by Service.</h2>
+      <p class="section-desc">Headquartered in Addison, IL — Palmer's own fleet delivers directly to {city["name"]} and all surrounding suburbs.</p>
+      <div class="why-grid">
+        <div class="why-item">
+          <div class="why-num">35+</div>
+          <div class="why-label">Years in Business</div>
+        </div>
+        <div class="why-item">
+          <div class="why-num">22</div>
+          <div class="why-label">Years — Neil's Experience</div>
+        </div>
+        <div class="why-item">
+          <div class="why-num">12k+</div>
+          <div class="why-label">Products Stocked</div>
+        </div>
+        <div class="why-item">
+          <div class="why-num">100%</div>
+          <div class="why-label">Company-Owned Fleet</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="section-inner">
+      <p class="section-label">FAQ</p>
+      <h2 class="section-title">Packaging Questions — {city["name"]}</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open'); const a=this.nextElementSibling; a.style.maxHeight=a.style.maxHeight?'':a.scrollHeight+'px'">
+            Does Palmer Packaging deliver to {city["name"]}?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer"><p>Yes. Palmer Packaging delivers directly to {city["name"]}, IL on their company-owned fleet from their Addison headquarters. Most orders ship next business day.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open'); const a=this.nextElementSibling; a.style.maxHeight=a.style.maxHeight?'':a.scrollHeight+'px'">
+            What packaging products are available in {city["name"]}?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer"><p>Palmer Packaging stocks over 12,000 products including corrugated boxes, stretch film, shrink wrap, strapping, bubble wrap, poly bags, packaging tape, edge protectors, kraft paper, mailing tubes, and janitorial supplies — all at below-retail distributor pricing.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open'); const a=this.nextElementSibling; a.style.maxHeight=a.style.maxHeight?'':a.scrollHeight+'px'">
+            How do I get a packaging quote for my {city["name"]} business?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer"><p>Contact Neil Curtis directly at (630) 628-6500 or ncpalmerpack@gmail.com. He is available Monday through Friday, 8am to 5pm CST and typically responds the same business day with competitive pricing.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open'); const a=this.nextElementSibling; a.style.maxHeight=a.style.maxHeight?'':a.scrollHeight+'px'">
+            What areas does Palmer Packaging serve?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer"><p>Palmer Packaging serves {city["faq_area"]}. Company-owned fleet delivers directly — no third-party carriers.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open'); const a=this.nextElementSibling; a.style.maxHeight=a.style.maxHeight?'':a.scrollHeight+'px'">
+            Does Palmer offer custom stocking programs?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer"><p>Yes. Palmer Packaging offers custom inventory stocking programs out of their Addison, IL warehouse. Your supplies stay stocked and ready without tying up your own warehouse space or capital. Neil Curtis will design a program around your usage patterns and delivery schedule.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="section-inner">
+      <p class="section-label">Get in Touch</p>
+      <h2 class="section-title">Let's Talk Packaging</h2>
+      <p class="section-desc">Whether you need a quote, want to see how much you can save versus retail pricing, or want to explore your options — Neil is here to help.</p>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div>
+              <h4>Phone</h4>
+              <a href="tel:+16306286500">(630) 628-6500</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <div>
+              <h4>Email</h4>
+              <a href="mailto:ncpalmerpack@gmail.com">ncpalmerpack@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <h4>Location</h4>
+              <p>Serving {city["name"]} &amp; surrounding suburbs<br>Palmer Packaging, Inc. — Addison, IL</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🕐</div>
+            <div>
+              <h4>Hours</h4>
+              <p>Monday – Friday, 8am – 5pm CST</p>
+            </div>
+          </div>
+        </div>
+        <form class="contact-form" id="contactForm" action="https://formspree.io/f/xzezyeqe" method="POST">
+          <input type="hidden" name="_subject" value="New inquiry from ncpalmerpack.com — {city["name"]}">
+          <input type="text" name="_gotcha" style="display:none">
+          <div class="form-row">
+            <input type="text" name="first_name" placeholder="First Name" required>
+            <input type="text" name="last_name" placeholder="Last Name" required>
+          </div>
+          <input type="email" name="email" placeholder="Email Address" required>
+          <input type="tel" name="phone" placeholder="Phone Number">
+          <input type="text" name="company" placeholder="Company Name">
+          <textarea name="message" placeholder="How can Neil help you?"></textarea>
+          <button type="submit" class="btn btn-primary" style="justify-content: center;" id="submitBtn">Send Message</button>
+          <p id="formSuccess" style="display:none; color: var(--green-light); font-weight: 600; text-align: center; margin-top: 12px;">Thank you! Neil will be in touch shortly.</p>
+          <p id="formError" style="display:none; color: #ef4444; font-weight: 600; text-align: center; margin-top: 12px;">Something went wrong. Please email <a href="mailto:ncpalmerpack@gmail.com" style="color: #ef4444;">ncpalmerpack@gmail.com</a> directly.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- NEARBY CITIES -->
+  <section class="nearby">
+    <p>Also serving: {nearby_html} · <a href="/">Home</a></p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-logo">
+      <img src="images/logo.png" alt="Palmer Packaging">
+    </div>
+    <p>Neil Curtis — Authorized Sales Representative, Palmer Packaging, Inc.</p>
+    <p style="margin-top: 8px;">&copy; 2026 All rights reserved.</p>
+    <p style="margin-top: 12px; font-size: 0.7rem; opacity: 0.5;"><a href="https://findable.vip" target="_blank" rel="noopener" style="color: inherit; text-decoration: none;">SEO/AEO by Findable.vip</a></p>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {{
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    }});
+
+    document.querySelectorAll('a[href^="#"]').forEach(a => {{
+      a.addEventListener('click', e => {{
+        e.preventDefault();
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {{
+          const offset = window.innerWidth <= 768 ? 68 : 68;
+          const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+          window.scrollTo({{ top, behavior: 'smooth' }});
+        }}
+      }});
+    }});
+
+    const contactForm = document.getElementById('contactForm');
+    contactForm.addEventListener('submit', async (e) => {{
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      const successMsg = document.getElementById('formSuccess');
+      const errorMsg = document.getElementById('formError');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+      successMsg.style.display = 'none';
+      errorMsg.style.display = 'none';
+      try {{
+        const res = await fetch(contactForm.action, {{
+          method: 'POST',
+          body: new FormData(contactForm),
+          headers: {{ 'Accept': 'application/json' }}
+        }});
+        if (res.ok) {{
+          contactForm.reset();
+          successMsg.style.display = 'block';
+          btn.textContent = 'Sent!';
+          setTimeout(() => {{ btn.textContent = 'Send Message'; btn.disabled = false; }}, 4000);
+        }} else {{
+          throw new Error();
+        }}
+      }} catch {{
+        errorMsg.style.display = 'block';
+        btn.textContent = 'Send Message';
+        btn.disabled = false;
+      }}
+    }});
+  </script>
+</body>
+</html>'''
+
+
+# Generate all pages
+output_dir = os.path.dirname(os.path.abspath(__file__))
+for slug, city in CITIES.items():
+    html = generate_page(slug, city)
+    filepath = os.path.join(output_dir, f"{slug}.html")
+    with open(filepath, "w") as f:
+        f.write(html)
+    print(f"Generated {slug}.html")
+
+print("Done — 6 city pages generated.")
