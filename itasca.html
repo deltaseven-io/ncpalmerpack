@@ -186,7 +186,7 @@
     .hero h1 .accent { color: var(--green-light); }
     .hero-sub { font-size: 18px; color: var(--gray-400); max-width: 700px; margin: 0 auto 32px; line-height: 1.7; }
     .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 28px; border-radius: 10px; font-size: 15px; font-weight: 600; text-decoration: none; transition: var(--transition); cursor: pointer; border: none; white-space: nowrap; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; gap: 8px; padding: 14px 28px; border-radius: 10px; font-size: 15px; font-weight: 600; text-decoration: none; transition: var(--transition); cursor: pointer; border: none; white-space: nowrap; }
     .btn-primary { background: var(--green); color: var(--white); }
     .btn-primary:hover { background: var(--green-dark); transform: translateY(-1px); }
     .btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.2); }
@@ -243,7 +243,7 @@
     .contact-item a, .contact-item p { font-size: 15px; color: var(--text-light); text-decoration: none; }
     .contact-item a:hover { color: var(--green); }
     .contact-form { display: flex; flex-direction: column; gap: 16px; }
-    .contact-form input, .contact-form textarea { padding: 14px 16px; border: 1px solid var(--gray-200); border-radius: 8px; font-size: 15px; font-family: inherit; background: var(--white); }
+    .contact-form input, .contact-form textarea { width: 100%; box-sizing: border-box; padding: 14px 16px; border: 1px solid var(--gray-200); border-radius: 8px; font-size: 15px; font-family: inherit; background: var(--white); }
     .contact-form textarea { min-height: 120px; resize: vertical; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 
