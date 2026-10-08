@@ -243,10 +243,10 @@
     .contact-item h4 { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
     .contact-item a, .contact-item p { font-size: 15px; color: var(--text-light); text-decoration: none; }
     .contact-item a:hover { color: var(--green); }
-    .contact-form { display: flex; flex-direction: column; gap: 12px; }
+    .contact-form { display: flex; flex-direction: column; gap: 16px; }
     .contact-form input, .contact-form textarea { padding: 14px 16px; border: 1px solid var(--gray-200); border-radius: 8px; font-size: 15px; font-family: inherit; background: var(--white); }
     .contact-form textarea { min-height: 120px; resize: vertical; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 
     /* NEARBY */
     .nearby { padding: 40px; background: var(--white); text-align: center; border-top: 1px solid var(--gray-200); }
@@ -533,7 +533,7 @@
           <input type="tel" name="phone" placeholder="Phone Number">
           <input type="text" name="company" placeholder="Company Name">
           <textarea name="message" placeholder="How can Neil help you?"></textarea>
-          <button type="submit" class="btn btn-primary" style="justify-content: center;" id="submitBtn">Send Message</button>
+          <button type="submit" class="btn btn-primary" style="justify-content: center; width: 100%; display: flex;" id="submitBtn">Send Message</button>
           <p id="formSuccess" style="display:none; color: var(--green-light); font-weight: 600; text-align: center; margin-top: 12px;">Thank you! Neil will be in touch shortly.</p>
           <p id="formError" style="display:none; color: #ef4444; font-weight: 600; text-align: center; margin-top: 12px;">Something went wrong. Please email <a href="mailto:ncpalmerpack@gmail.com" style="color: #ef4444;">ncpalmerpack@gmail.com</a> directly.</p>
         </form>
