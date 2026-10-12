@@ -272,7 +272,84 @@
       .section-title { font-size: 24px; }
       .why { padding: 32px 20px; }
       body { padding-bottom: 60px; }
+      .cost-banner { padding: 24px 20px; }
+      .cost-banner h3 { font-size: 18px; }
+      .cost-banner p { font-size: 14px; }
+      .featured { padding: 40px 20px; }
+      .featured-grid { grid-template-columns: 1fr 1fr; }
     }
+
+    /* COST BANNER */
+    .cost-banner {
+      background: linear-gradient(135deg, #1a3a1a 0%, #0d2e0d 100%);
+      padding: 32px 40px;
+      text-align: center;
+      border-bottom: 3px solid var(--green);
+    }
+    .cost-banner-inner {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .cost-banner h3 {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--green-light);
+      margin-bottom: 8px;
+    }
+    .cost-banner p {
+      font-size: 16px;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.6;
+    }
+
+    /* FEATURED PRODUCTS */
+    .featured {
+      padding: 60px 40px;
+      background: var(--gray-50);
+    }
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+      margin-top: 32px;
+    }
+    .featured-item {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 24px 16px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      border: 2px solid transparent;
+    }
+    .featured-item:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--green);
+    }
+    .featured-item h4 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+    .featured-item p {
+      font-size: 13px;
+      color: var(--text-light);
+      line-height: 1.5;
+    }
+    .catalog-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 12px;
+      color: var(--green);
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+    }
+    .catalog-link:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
@@ -352,6 +429,14 @@
     </div>
   </section>
 
+    <!-- COST SAVINGS BANNER -->
+  <section class="cost-banner">
+    <div class="cost-banner-inner">
+      <h3>We Can Lower Your Packaging Costs</h3>
+      <p>In today's unstable market with ever-increasing price hikes, Neil can definitely lower your packaging costs. Let him review what you're spending and show you what those same products cost through Palmer at below-retail distributor pricing.</p>
+    </div>
+  </section>
+
   <!-- ABOUT / CITY INTRO -->
   <section class="about" id="about">
     <div class="section-inner">
@@ -379,9 +464,10 @@
       <p class="section-desc">Over 12,000 products in stock and ready for next day delivery to Elk Grove Village — all priced below retail.</p>
       <div class="services-grid">
         <div class="service-card">
-          <div class="service-icon"><img src="images/design.jpg" alt="Equipment & Service" loading="lazy"></div>
+          <div class="service-icon"><img src="images/stretch-wrapper.png" alt="Equipment & Service" loading="lazy"></div>
           <h4>Equipment & Service</h4>
           <p>Semi-auto and automatic strapping machines, stretch wrap equipment, tape dispensers, and heat seal systems — plus installation, repair, and preventive maintenance.</p>
+          <a href="https://palmerpackaging.net/" target="_blank" rel="noopener" class="catalog-link">Browse Full Product Catalog →</a>
         </div>
         <div class="service-card">
           <div class="service-icon"><img src="images/bubble.png" alt="Protective Packaging" loading="lazy"></div>
@@ -480,6 +566,14 @@
           </button>
           <div class="faq-answer"><p>Yes. Palmer Packaging offers custom inventory stocking programs out of their Addison, IL warehouse. Your supplies stay stocked and ready without tying up your own warehouse space or capital. Neil Curtis will design a program around your usage patterns and delivery schedule.</p></div>
         </div>
+      
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open'); const a=this.nextElementSibling; a.style.maxHeight=a.style.maxHeight?'':a.scrollHeight+'px'">
+            Can Palmer help lower my packaging costs?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer"><p>Absolutely. Neil Curtis will review what you're currently spending, show you what those same products cost through Palmer at below-retail distributor pricing, and put together a solution that saves you real money — especially important during today's market with rising material costs.</p></div>
+        </div>
       </div>
     </div>
   </section>
@@ -544,7 +638,7 @@
 
   <!-- NEARBY CITIES -->
   <section class="nearby">
-    <p>Also serving: <a href="/addison">Addison</a> · <a href="/bensenville">Bensenville</a> · <a href="/wood-dale">Wood Dale</a> · <a href="/itasca">Itasca</a> · <a href="/franklin-park">Franklin Park</a> · <a href="/">Home</a></p>
+    <p>Also serving: <a href="/addison">Addison</a> · <a href="/bensenville">Bensenville</a> · <a href="/wood-dale">Wood Dale</a> · <a href="/itasca">Itasca</a> · <a href="/schaumburg">Schaumburg</a> · <a href="/des-plaines">Des Plaines</a> · <a href="/rolling-meadows">Rolling Meadows</a> · <a href="/">Home</a></p>
   </section>
 
   <!-- FOOTER -->
