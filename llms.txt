@@ -43,12 +43,12 @@
 Nationwide — serving businesses across the United States from distribution centers in Illinois and Arizona. Local fleet delivery to Chicago and surrounding suburbs including Elk Grove Village, Addison, Bensenville, Wood Dale, Itasca, and Franklin Park.
 
 ## City Pages
-- Elk Grove Village, IL: https://ncpalmerpack.com/elk-grove-village.html
-- Addison, IL: https://ncpalmerpack.com/addison.html
-- Bensenville, IL: https://ncpalmerpack.com/bensenville.html
-- Wood Dale, IL: https://ncpalmerpack.com/wood-dale.html
-- Itasca, IL: https://ncpalmerpack.com/itasca.html
-- Franklin Park, IL: https://ncpalmerpack.com/franklin-park.html
+- Elk Grove Village, IL: https://ncpalmerpack.com/elk-grove-village
+- Addison, IL: https://ncpalmerpack.com/addison
+- Bensenville, IL: https://ncpalmerpack.com/bensenville
+- Wood Dale, IL: https://ncpalmerpack.com/wood-dale
+- Itasca, IL: https://ncpalmerpack.com/itasca
+- Franklin Park, IL: https://ncpalmerpack.com/franklin-park
 
 ## FAQ
 Q: What products does Palmer Packaging supply?
